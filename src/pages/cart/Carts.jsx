@@ -12,18 +12,20 @@ const Carts = () => {
   const cartItems = useSelector((state) => state.cart)
    
 
-   const [totalAmount, setTotalAmount] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
     let temp = 0;
     cartItems.forEach((cartItem) => {
-      temp = temp + parseInt(cartItem.price)
-    })
+      temp = temp + parseInt(cartItem.price);
+    });
     setTotalAmount(temp);
-    // console.log(temp)
-  }, [cartItems])
+  }, [cartItems]);
 
-  const shipping = parseInt(100);
-  const grandTotal = shipping + totalAmount
+  // Determine the shipping cost based on the total order amount
+  const shippingCost = totalAmount >= 500 ? 0 : 100;
+
+  // Calculate the grand total including shipping cost
+  const grandTotal = shippingCost + totalAmount;
 
    const deleteCart = (item) => {
     dispatch(deleteFromCart(item))
@@ -150,7 +152,7 @@ const Carts = () => {
           </div>
           <div className="flex justify-between">
             <p className="text-gray-700" >Shipping</p>
-              <p className="text-gray-700" >₹{shipping}</p>
+              <p className="text-gray-700" >₹{shippingCost}</p>
           </div>
           <hr className="my-4" />
           <div className="flex justify-between mb-3">
