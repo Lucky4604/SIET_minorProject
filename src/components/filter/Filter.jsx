@@ -48,22 +48,22 @@ const Filter = () => {
                     </div>
                     <div>
                         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                            <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" >
+                        <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" >
+                        <option value="None">None</option> 
                             {product.map((item, index) => {
                                 return (
                                     <option value={item.category}>{item.category}</option>
                                 )
                             })}
-                               
-                            </select>
-                            <select   value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" >
-                                
+                        </select>
+                        <select value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" >
+                        <option value="None">None</option> 
                             {product.map((item, index) => {
                                 return (
                                     <option value={item.price}>{item.price}</option>
                                 )
                             })}
-                            </select>
+                        </select>
 
                         </div>
                     </div>

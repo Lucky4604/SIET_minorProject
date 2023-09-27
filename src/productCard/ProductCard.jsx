@@ -7,7 +7,8 @@ import { toast } from 'react-toastify';
 
 const ProductCard = ({ showAll }) => {
     const context = useContext(myContext);
-    const { product } = context;
+    const { product,searchkey,filterType,
+        filterPrice  } = context;
 
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart);
@@ -28,6 +29,11 @@ const ProductCard = ({ showAll }) => {
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
+    const filteredProducts = product
+        .filter((obj) => obj.title.toLowerCase().includes(searchkey.toLowerCase()))
+        .filter((obj) => filterType === 'All' || obj.category.toLowerCase().includes(filterType.toLowerCase()))
+        .filter((obj) => filterPrice === 'All' || obj.price.includes(filterPrice));
+
     return (
         <section className="text-white body-font">
             <div className="container px-5 py-8 md:py-16 mx-auto">
@@ -37,8 +43,9 @@ const ProductCard = ({ showAll }) => {
                 </div>
 
                 <div className="flex flex-wrap -m-4 bg-white">
-                    {productsToDisplay.map((item, index) => {
+                    {filteredProducts.map((item, index) => {
                         const { title, price, imageUrl, id } = item;
+                        if (productsToDisplay.includes(item)) {
 
                         return (
                             <div onClick={() => window.location.href = `/productinfo/${item.id}`} key={index} className="p-4 md:w-1/4 drop-shadow-lg">
@@ -63,6 +70,8 @@ const ProductCard = ({ showAll }) => {
                                 </div>
                             </div>
                         );
+                    }
+                    return null
                     })}
                 </div>
             </div>
