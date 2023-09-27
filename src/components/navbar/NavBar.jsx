@@ -166,7 +166,7 @@ const cartItems = useSelector((state) => state.cart)
                 
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+               <div className="ml-4 flow-root lg:ml-6">
   {user?.user?.email !== 'luckygovindrao182@gmail.com' && (
     <Link to={'/cart'} className="group -m-2 flex items-center p-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
