@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'; 
 import MyState from './components/contextApi/myState'
 import Order from './pages/order/Order'
+import AllProduct from './pages/products/AllProduct'
 
 
 
@@ -28,12 +29,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/order" element={
-
-
-            <Order/>
-          
+            <Order/>  
           } />
         <Route path='/cart' element={<Carts/>} />
+        <Route path='/allproducts' element={<AllProduct/>}/>
         <Route path="/dashboard" element={
             <ProtectedRoutesForAdmin><Dashboard /></ProtectedRoutesForAdmin>
           } />
